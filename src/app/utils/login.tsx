@@ -7,7 +7,7 @@ export const validateEmail = (email: string) => {
 };
 
 export const validate = (values: { email: string; password: string }) => {
-  const errors: any = {};
+  const errors = { email: "", password: "" };
 
   if (!values.email || `${values.email}`.trim().length == 0) {
     errors.email = "Email is required";

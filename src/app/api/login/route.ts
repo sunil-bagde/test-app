@@ -1,32 +1,21 @@
 import { createEdgeRouter } from "next-connect";
 import { NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
-
-const HASH = "$2a$10$2RSqFKwEvE6jiRPNaykaq.GKHr4rJf2FDU/UPn/AEipcaSZgpDlTK";
+import { login } from "@/app/utils/auth";
+import { logger } from "@/app/logger"; 
 
 export async function POST(request: NextRequest, ctx: { params?: unknown }) {
-  const { email, password } = await request.json();
+    try {
+    const { email, password } = await request.json();
+    logger.info(`Login called: ${email}`);  
+    await login(email, password);
 
-  try {
-    let isPassword = await bcrypt.compare(password, HASH);
-
-    const date = new Date();
-    let currentUser = {
-      id: 1,
-      name: "John",
-      expiredAt: date.setTime(date.getTime() + 24 * 60 * 60 * 1000), // current+24 HRS
-    };
-
-    if (email == "admin@gmail.com" && isPassword) {
-      return new Response(JSON.stringify(currentUser), {
-        status: 200,
-      });
-    }
-
-    return new Response(errorLogin(), {
-      status: 401,
+    return new Response("", {
+      status: 200,
     });
+    
   } catch (err) {
+    logger.info(`Login error: ${err.message}`);  
     return new Response(errorLogin(), {
       status: 401,
     });
