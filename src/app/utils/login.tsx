@@ -1,4 +1,4 @@
-export const validateEmail = (email:string) => {
+export const validateEmail = (email: string) => {
   return String(email)
     .toLowerCase()
     .match(
@@ -6,10 +6,7 @@ export const validateEmail = (email:string) => {
     );
 };
 
-export const validate = (values: {
-  email: string;
-  password: string;
-}) => {
+export const validate = (values: { email: string; password: string }) => {
   const errors: any = {};
 
   if (!values.email || `${values.email}`.trim().length == 0) {
@@ -20,6 +17,6 @@ export const validate = (values: {
   if (!values.password || `${values.password}`.trim().length == 0) {
     errors.password = "Password is required";
   }
- 
+
   return errors;
 };

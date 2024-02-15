@@ -1,10 +1,8 @@
-import { useState, useCallback } from 'react';
-
+import { useState, useCallback } from "react";
 
 // **** Types **** //
 
 export type TSetState<T> = (newPartialState: Partial<T>) => void;
-
 
 // **** Functions **** //
 
@@ -26,8 +24,7 @@ function useSetState<T extends object>(initialState: T): [T, TSetState<T>] {
   }, []);
   // Return
   return [state, setCustomState];
-};
-
+}
 
 // **** Export Default **** //
 

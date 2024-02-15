@@ -1,11 +1,8 @@
 import { createEdgeRouter } from "next-connect";
 import { NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
- 
 
 const HASH = "$2a$10$2RSqFKwEvE6jiRPNaykaq.GKHr4rJf2FDU/UPn/AEipcaSZgpDlTK";
-
- 
 
 export async function POST(request: NextRequest, ctx: { params?: unknown }) {
   const { email, password } = await request.json();

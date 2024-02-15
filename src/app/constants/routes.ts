@@ -1,14 +1,7 @@
+export const HOME_ROUTE = "/";
+export const LOGIN_ROUTE = "/login";
 
-export const HOME_ROUTE = "/"
-export const LOGIN_ROUTE = "/login"
+export const LOGIN_API = "/api/login";
+export const POSTS_API = "/api/post";
 
-
-export const LOGIN_API= "/api/login"
-export const POSTS_API= "/api/post"
-
-export const USER_TOKEN = 'user-token'
-
-
-
-
-
+export const USER_TOKEN = "user-token";

@@ -1,6 +1,4 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+const config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,12 +9,10 @@ const config: Config = {
       colors: {
         "primary-1": "#041324",
         "primary-2": "#2a4562",
-        "primary-3": "#ced4da" ,
-        "primary-4": "#8c68cd" ,
-        "primary-5": "#878a99" ,
-
+        "primary-3": "#ced4da",
+        "primary-4": "#8c68cd",
+        "primary-5": "#878a99",
       },
-    
     },
   },
   plugins: [],
