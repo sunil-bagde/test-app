@@ -13,6 +13,7 @@
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
+    "jose": "^5.2.2",
     "next": "14.1.0",
     "next-connect": "^1.0.0",
     "postcss": "^8.4.35",
@@ -28,9 +29,11 @@
     "twin.macro": "^3.4.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "typescript": "^5"

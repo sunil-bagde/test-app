@@ -4,21 +4,23 @@ import { useCookies } from "react-cookie";
 import useSetState from "@/app/hooks/useSetState";
 import { validateEmail, validate } from "@/app/utils/login";
 import { login as doLogin } from "@/app/services/auth";
-
+import { HOME_ROUTE} from "@/app/constants/routes";
 import { useRouter } from "next/navigation";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import * as React from "react";
 
+const initialErrors  =  {email:"", password: ""}
 export function Login() {
   let [cookies, setCookie, removeCookie] = useCookies();
 
   let [state, setState] = useSetState({
-    validationError: {},
+    validationError: initialErrors,
     isSubmiting: false,
     loginError: "",
   });
   let router = useRouter();
   let { validationError, isSubmiting, loginError } = state;
-  let handleLogin = async event => {
+  let handleLogin = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     setState({ isSubmiting: true, loginError: "" });
 
@@ -40,7 +42,7 @@ export function Login() {
 
       return;
     } else {
-      setState({ validationError: {} });
+      setState({ validationError: initialErrors });
     }
     // submit
     try {
@@ -50,11 +52,11 @@ export function Login() {
         password,
       });
       setCookie("currentUser", JSON.stringify(userData));
-      router.push(`/`);
+      router.push(HOME_ROUTE);
     } catch (err) {
       console.log("err", err);
       setState({
-        validationError: {},
+        validationError: initialErrors,
         isSubmiting: false,
         loginError: "Please check username or password",
       });
@@ -144,10 +146,7 @@ export function Login() {
                     {validationError.password}
                   </p>
                 </div>
-                <p className="mt -mt-2 text-sm text-red-600 dark:text-red-500">
-                  <span className="font-medium"> </span>{" "}
-                  {validationError.captcha}
-                </p>
+              
                 <div className=" pb-4 pt-2">
                   <button
                     type="submit"
